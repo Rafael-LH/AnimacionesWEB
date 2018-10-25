@@ -1,0 +1,45 @@
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    color: #fff;
+    font-family: Arial;
+
+    /*esta propiedad funciona con translateZ*/
+    perspective: 200px; 
+    /* puedo cambiar mi perspectica para que se vea desde arriba o abajo izquierda y derecha */
+    /* perspective-origin: top; */
+    /* perspective-origin: bottom; */
+    /* perspective-origin: left; */
+    /* perspective-origin: right; */
+    
+}
+.container{
+    border: 1px solid red;
+    cursor: pointer;
+}
+.cuadrado{
+    background: purple;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    transition: .8s;
+
+}
+.container:hover .cuadrado{
+    /* transform: translate(100px); */
+    /* transform: translate(x, y); */
+    /* transform: translate(100px, 100px); */
+    /* transform: translateZ(100px); */
+    /* transform: translate3d(x, y, z) */
+    transform: translate3d(100px, 200px, 90px);
+    /* transform: scale(2); */ /*aumenta la escala*/
+    transition: .8s;
+
+}

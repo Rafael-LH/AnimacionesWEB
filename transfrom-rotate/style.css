@@ -1,0 +1,32 @@
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    color: #fff;
+    font-family: Arial;
+}
+.container{
+    border: 1px solid red;
+    cursor: pointer;
+}
+.cuadrado{
+    background: purple;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    transition: .8s;
+
+}
+.container:hover .cuadrado{
+        /* transform: rotate(360deg); */
+        /* transform: rotateX(45deg) rotateY(45deg) rotateZ(45deg); esto se puede cambiar por lo de abajo*/
+        /* transform: rotate3d(x, y, z, rotate); EJEMPLO*/
+        transform: rotate3d(1, 1, 1, 45deg);
+        transition: .8s;
+}
