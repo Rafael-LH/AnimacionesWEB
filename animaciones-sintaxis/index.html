@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sintaxis</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      font-family: Arial;
+      perspective: 200px;
+    }
+    .container {
+      border: 1px solid red;
+      cursor: pointer;
+      width: 100%;
+    }
+    /*.cuadrado:hover {*/
+    .container:hover .cuadrado {
+        /* pausamos la animacion */
+        animation-play-state: paused;
+    }
+    .cuadrado {
+      width: 200px;
+      height: 200px;
+      background: #7dc900;
+      margin: 20px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* transition: .3s; */
+      animation-name: cuadrado;
+      animation-duration: 2s;
+      /*animation-delay: 1s; /* el animation-delay es para controlar el tiempo que queremos que se ejecute nuestra animacion */
+      animation-iteration-count: infinite; /*la animacion se hara de forma infinita */
+      /*animation-iteration-count: 2; /*la animacion se hara dos veces*/
+      /* animation-timing-function: ease; */
+     /* animation-timing-function: ease-in; */
+     /* animation-timing-function: ease-out; */
+      /*animation-timing-function: ease-in-out;
+      /* parametros para las animaciones */
+      /*animation-direction: reverse; /*la animacion va ir al revez*/
+      animation-direction: alternate; /*alterna la animacion*/
+
+      /* lo que hace la siguiente animacion es quedarse con los estilos del porcentaje en 100% en este caso seria rotate(360deg) */
+      /* animation-fill-mode: forwards; */
+      position: relative;
+    }
+    @keyframes cuadrado{
+          0%{ /*estado inicial*/
+              left: 0;
+          }
+          100%{ /*estado final*/
+              left: calc(100% - 240px);
+
+          }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="cuadrado">
+      Hola mundo!
+    </div>
+  </div>
+</body>
+</html>
