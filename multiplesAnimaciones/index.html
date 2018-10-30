@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multiples Animaciones</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      font-family: Arial;
+      perspective: 200px;
+    }
+    .container {
+      border: 1px solid red;
+      cursor: pointer;
+      width: 100%;
+    }
+    /*.cuadrado:hover {*/
+    .container:hover .cuadrado {
+        /* pausamos la animacion */
+        animation-play-state: paused;
+    }
+    .cuadrado {
+      width: 200px;
+      height: 200px;
+      background: #7dc900;
+      margin: 20px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* transition: .3s; */
+      animation-name: cuadrado, rebote;
+      animation-duration: 3s, .3s; /*el segundo parametro va para mi segunda animacion*/
+      /*animation-delay: 1s; /* el animation-delay es para controlar el tiempo que queremos que se ejecute nuestra animacion */
+      animation-iteration-count: infinite; /*la animacion se hara de forma infinita */
+      /*animation-iteration-count: 2; /*la animacion se hara dos veces*/
+      /* animation-timing-function: ease; */
+     /* animation-timing-function: ease-in; /*la animacion empieza lento y termina rapido*/
+     /* animation-timing-function: ease-out; /* la animacion empieza rapido y termina lento*/
+      /*animation-timing-function: ease-in-out ; /*normal lento normal lento hace como un efecto pendular */
+      /*animation-timing-function: linear; /*la animacion no tendra aceleracion ira en una velocidad constante*/
+      /* parametros para las animaciones */
+      /*animation-direction: reverse; /*la animacion va ir al revez*/
+      animation-direction: alternate; /*alterna la animacion va de un lado para otro*/
+      /*animation-timing-function: steps(60); /*puedo controlar los pasos por segun en que valla mi animacion en este caso se movera a 60 frames(pasos)*/
+      /* lo que hace la siguiente animacion es quedarse con los estilos del porcentaje en 100% en este caso seria rotate(360deg) */
+      /* animation-fill-mode: forwards; */
+      position: relative;
+      /*esta es la forma en la cual podemos personalizar nuestra curva de bezier*/
+      /* animation-timing-function: cubic-bezier(.75, -0.31, .33, 1.4);  */
+      animation-timing-function: linear, ease-in-out;
+      /* pagina generadora de curvas de bezier http://cubic-bezier.com/#.12,.99,1,.12 */
+    }
+    @keyframes cuadrado{
+          0%{ /*estado inicial*/
+              left: 0;
+          }
+          100%{ /*estado final*/
+              left: calc(100% - 240px);
+
+          }
+    }
+    @keyframes rebote{
+        /* 0%{ */
+        from{ /*desde*/
+            transform: translateY(0); 
+        }
+        /* 100%{ */
+        to{ /*hasta*/
+            transform: translateY(100px) scaleX(1.2); 
+        }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="cuadrado">
+      Hola mundo!
+    </div>
+  </div>
+</body>
+</html>
