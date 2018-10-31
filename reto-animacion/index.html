@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reto</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            text-decoration: none;
+            list-style: none;
+        }
+        .container-menu{
+            width: 100%;
+        }
+        .categorias{
+            display: flex;
+            background: brown;
+        }
+        .categorias li a:hover{
+            background: #fff;
+            color: brown;
+
+        }
+        .categorias li a{
+            display: block;
+            font-size: 1.1em;
+            color: #fff;
+            padding: 10px 10px;
+        }
+        li .subContenedor{
+            display: flex;
+            flex-direction: column;
+        }
+        li ul {
+            display: block;
+            text-align: center;
+            position: absolute;
+            width: 300px;
+            background: brown;
+            transform: translateX(-300px);
+            transition:  1s;
+
+        }
+        .mostra{
+            transform: translateX(0px);
+            transition:  1s;
+        }
+    </style>
+</head>
+<body>
+
+         <div class="container-menu">
+            <ul class="categorias">
+                    <li>
+                        <a href="#" id="subContenedor" id="subContenedor">Categorias</a>
+                        <ul class="subContenedor" id="ulSubcontenedor">
+                            <li> <a href="#">item</a> </li>
+                            <li> <a href="#">item</a> </li>
+                            <li> <a href="#">item</a> </li>
+                            <li> <a href="#">item</a> </li>
+                        </ul>
+                    </li>
+            </ul>
+         </div>   
+
+        <script>
+                let bandera = true;
+                 document.getElementById('subContenedor').addEventListener('click', e=>{
+                        const DOM = document.getElementById('ulSubcontenedor')
+                    
+                    if(bandera){
+                        DOM.classList.add('mostra')    
+                        bandera = false;
+                        
+                    }else{
+                        DOM.classList.remove('mostra')
+                        bandera = true;   
+                    }
+                 })   
+        </script>
+</body>
+</html>

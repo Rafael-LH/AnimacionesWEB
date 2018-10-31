@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Javascript Element.Animate</title>
+  <style>
+      body{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+      }
+      .container{
+          width: 600px;
+          border: 1px solid red;
+      }
+      .pelota{
+          width: 100px;
+          height: 100px;
+          background: red;
+          border-radius: 50%;
+      }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <div class="pelota" id="pelota">
+
+        </div>
+    </div>
+    <script>
+            const PELOTA = document.getElementById('pelota');
+            // elemento.animate(keyFrames = [{}], options = {})
+            PELOTA.animate([
+                // from, donde empieza
+                {
+                   transform: 'translateX(0)' 
+                },
+                // to, donde termina
+                {
+                    transform: 'translateX(500px)'
+                }
+            ],{
+               duration: 1000, //tendra una duracion de 1 segundo
+               delay: 1000, //va a tener una espera de ejecucion de 1 segundo
+               direction: 'normal', //en que direccion se va a ir mi elmento si de izquierda a derecha o de derecha a izquierda
+               easing: 'linear', //mantendra una velocidad constante 
+               iterations: Infinity, //animacion infinita
+               fill: 'forwards', //los estilos que se aplicaran a ami elemento despues de que la iteracion se termine, en este caso con for wards tomaria los estilos que tengo
+               iterationStart: .5, //empieza mi animacion en el 50% que es la mitad
+             //endDelay: 500  //tiempo en milisegundos que esperar el elemento despues de terminar la animacion
+            })
+    </script>
+</body>
+</html>
