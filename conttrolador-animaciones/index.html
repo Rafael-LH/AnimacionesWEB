@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Control de animaciones Element.Animate</title>
+  <style>
+      body{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+      }
+      .container{
+          width: 600px;
+          border: 1px solid red;
+      }
+      .pelota{
+          width: 100px;
+          height: 100px;
+          background: red;
+          border-radius: 50%;
+      }
+      .buttons{
+          display: flex;
+          justify-content: center;
+          padding: 20px;
+          background: rgb(0, 0, 0, .7);
+      }
+      .buttons button{
+          background: #DC143C;
+          color: #fff;
+          font-size: .8em;
+          padding: 6px 10px;
+          margin-left: 5px;
+          border: none;
+          outline: 0;
+          border-radius: 3px;
+          cursor: pointer;
+          box-shadow: inset 0 -.2em rgb(0, 0, 0, .2);
+          margin-bottom: 10px;  
+          transition: .2s;
+          will-change: transform; /*optimizamos con wiil-change y le avisamos con aticipacion lo que cambiara que ne este caso es el transform*/ 
+      }
+      .buttons button:active{
+            transform: scale(.7);
+            transition: .2s;
+      }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <div class="pelota" id="pelota">
+        </div>
+        <div class="buttons">
+                <button id="play">Play</button>
+                <button id="pause">Pause</button>
+                <button id="stop">Stop</button>
+                <button id="reverse">Reverse</button>
+        </div>
+    </div>
+    <script>
+            const PELOTA = document.getElementById('pelota');
+            // elemento.animate(keyFrames = [{}], options = {})
+            const ANIMATE = PELOTA.animate([
+                // from, donde empieza
+                {
+                   transform: 'translateX(0)' 
+                },
+                // to, donde termina
+                {
+                    transform: 'translateX(500px)'
+                }
+            ],{
+               duration: 1000, //tendra una duracion de 1 segundo
+               delay: 1000, //va a tener una espera de ejecucion de 1 segundo
+               direction: 'normal', //en que direccion se va a ir mi elmento si de izquierda a derecha o de derecha a izquierda
+               easing: 'linear', //mantendra una velocidad constante 
+               iterations: Infinity, //animacion infinita
+               fill: 'forwards', //los estilos que se aplicaran a ami elemento despues de que la iteracion se termine, en este caso con for wards tomaria los estilos que tengo
+               iterationStart: .5, //empieza mi animacion en el 50% que es la mitad
+             //endDelay: 500  //tiempo en milisegundos que esperar el elemento despues de terminar la animacion
+            })
+            const PLAY = document.getElementById('play')
+            const PAUSE = document.getElementById('pause')
+            const STOP = document.getElementById('stop')
+            const REVERSE = document.getElementById('reverse')
+            
+            PLAY.addEventListener('click', e=>{
+                ANIMATE.play()
+            })
+            PAUSE.addEventListener('click', e=>{
+                ANIMATE.pause()
+            })
+            STOP.addEventListener('click', e=>{
+                ANIMATE.cancel()
+            })
+            REVERSE.addEventListener('click', e=>{
+                ANIMATE.reverse()
+            })
+    </script>
+</body>
+</html>

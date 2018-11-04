@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Animaciones de entrada y salida</title>
+</head>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .cuadrado{
+            height: 200px;
+            width: 200px;
+            background: purple;
+            /* animation: name time estado;  */
+            animation: animationIn 1s;
+            will-change: transform;
+        }
+        @keyframes animationIn {
+            0%{
+                transform: translateY(-1000px);
+            }
+            60%{
+                transform: translateY(25px);
+            }
+            75%{
+                transform: translateY(-50px);
+            }
+            90%{
+                transform: translateY(5px);
+            }
+            
+        }
+        /*@keyframes animationOut {
+            0%{
+                transform: translateY(5px);
+            }
+            60%{
+                transform: translateY(-50px);
+            }
+            75%{
+                transform: translateY(25px);
+            }
+            100%{
+                transform: translateY(-1000px);
+            }
+        }*/
+    </style>
+<body>
+        <div class="cuadrado" id="cuadrado">
+
+        </div>
+
+        <script>
+            const cuadrado = document.getElementById('cuadrado')
+
+            const animationOut = () =>{
+
+                cuadrado.animate(
+                    [ //animacion
+                        {
+                            transform: 'translateY(5px)'
+                        },
+                        {
+                            transform: 'translateY(-50px)'
+                        },
+                        {
+                            transform: 'translateY(25px)'
+                        },
+                        {
+                            transform: 'translateY(-1000px)'
+                        }
+
+                    ],{//opciones de la animacion
+                        duration: 1000, //tendra una duracion de 1 segundo
+                        direction: 'normal', //en que direccion se va a ir mi elmento si de izquierda a derecha o de derecha a izquierda
+                        easing: 'linear', //mantendra una velocidad constante 
+                        iterations: 1, //animacion infinita
+                        fill: 'forwards', //los estilos que se aplicaran a ami elemento despues de que la iteracion se termine, en este caso con for wards tomaria los estilos que tengo
+                    })
+
+                }//arrow function
+
+                setTimeout(()=>{
+                    animationOut() 
+                },1000)
+        
+        </script>
+</body>
+</html>

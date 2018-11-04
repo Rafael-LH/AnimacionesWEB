@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modal</title>
+</head>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        body{
+            /* display: flex;
+            align-items: center;
+            justify-content: center; */
+            font-family: Arial;
+        }
+        .overlay{
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: rgb(0, 0, 0, .8);
+            /* FLEX */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal{
+            width: 500px;
+            height: 200px;
+            background: #fff;
+            border-radius: 5px;
+            /* animation: name time estado;  */
+            animation: animationIn 1s forwards;
+            text-align: center;      
+            padding: 20px;      
+        }
+        .modal p{
+            margin-bottom: 10px;
+        }
+        
+        .modal-buttons button{
+                outline: 0;
+                border: none;
+                padding: 7px 25px;
+                color: #fff;
+                cursor: pointer;
+                transition: .5s;
+                border-radius: 5px;
+                margin: 10px 7px 0px;
+                will-change: transform;
+        }
+        .modal-buttons .si{
+            background:  cornflowerblue;
+        }
+        .modal-buttons .no{
+            background: red;
+        }
+        .modal-buttons button:hover{
+                 transform: scale(1.2);   
+        }
+        @keyframes animationIn {
+            0%{
+                transform: translateY(-1000px);
+            }
+            60%{
+                transform: translateY(25px);
+            }
+            75%{
+                transform: translateY(-50px);
+            }
+            90%{
+                transform: translateY(5px);
+            }
+            
+        }
+        @keyframes animationOut {
+            0%{
+                transform: translateY(5px);
+            }
+            60%{
+                transform: translateY(-50px);
+            }
+            75%{
+                transform: translateY(25px);
+            }
+            100%{
+                transform: translateY(-1000px);
+            }
+        }
+    </style>
+<body>
+        <div class="overlay" id="overlay">
+            <div class="modal" id="modal">
+                <h1><b>Atención</b></h1><br />
+                <p>Esta es una increible ventana modal</p>
+                <p>¿te gusto?</p>
+                <div class="modal-buttons">
+                    <button class="si" id="si">SI :)</button>
+                    <button class="no" >NO :(</button>
+                </div>
+            </div>
+        </div>    
+        <figure><img src="./webPlatzi.png" alt=""></figure>
+
+        <script>
+            const modal = document.getElementById('modal')
+
+            document.getElementById('si').addEventListener('click', e => {
+
+                modal.animate(
+                    [ //animacion
+                        {
+                            transform: 'translateY(5px)'
+                        },
+                        {
+                            transform: 'translateY(-50px)'
+                        },
+                        {
+                            transform: 'translateY(25px)'
+                        },
+                        {
+                            transform: 'translateY(-1000px)'
+                        }
+
+                    ],{//opciones de la animacion
+                        duration: 1000, //tendra una duracion de 1 segundo
+                        direction: 'normal', //en que direccion se va a ir mi elmento si de izquierda a derecha o de derecha a izquierda
+                        easing: 'linear', //mantendra una velocidad constante 
+                        iterations: 1, //animacion infinita
+                        fill: 'forwards', //los estilos que se aplicaran a ami elemento despues de que la iteracion se termine, en este caso con for wards tomaria los estilos que tengo
+                    })
+                     const overlay = document.getElementById('overlay')
+                     setTimeout(()=>{
+                        overlay.style.background = 'none'
+                        overlay.style.position = 'static'   
+                        modal.style.display = 'none';
+                     },1000)
+                })//arrow function
+        
+        </script>
+</body>
+</html>
