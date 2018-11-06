@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Twitter Like</title>
+</head>
+    <style>
+            body{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+
+            .like{
+                cursor: pointer;
+                height: 50px;
+                width: 50px;
+                background-image: url('corazon.png');
+                background-size: 1450px 50px;
+            }
+
+            .liked{
+                animation-name: like;
+                /* anchoImg  steps 100px por cada figura */
+                /* 2900 / 29 = 100px */
+                animation-timing-function: steps(28);
+                animation-duration: 1s;
+                animation-fill-mode: forwards;
+                /* o tambien puedo utilizar esto  */
+                /* background-position: right; */
+            }
+
+            @keyframes like{
+                0%{
+                    background-position: 0 0; 
+                }
+                100%{
+                    /*con background-position puedo mover mi imagen a la direccion que yo quiera  */
+                    /*background-position: -2800px 0;  hago este movimiento para avanzar entre la imagen y me muestre todas los corazones*/
+                    /* pero lo puedo hacer de una forma mas sencilla con lo siguiente    */
+                     background-position: right; 
+                    /* de esa manera no tengo la necesidad de moverme -2800px que es lo que mide mi imagen */
+                }
+            }
+    </style>
+<body>
+        <div class="tweet-box">
+            <div class="like" id="like"></div>
+        </div>
+
+        <script>
+            const like = document.getElementById('like')
+
+            like.addEventListener('click', e=>{
+
+                like.classList.toggle('liked')
+                    
+            })
+        </script>
+</body>
+</html>

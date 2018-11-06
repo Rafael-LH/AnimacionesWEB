@@ -19,6 +19,7 @@
         }
         .overlay{
             position: fixed;
+            z-index: 2;
             left: 0;
             right: 0;
             top: 0;
@@ -28,6 +29,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: 1s;
+            opacity: 0;
+            visibility: hidden; /*el hidden es oara que se oculte y no me pase como el menu de las categorias*/
+        }
+        .active{
+            animation-delay: 2s;
+            opacity: 1;
+            visibility: visible;
         }
         .modal{
             width: 500px;
@@ -35,7 +44,7 @@
             background: #fff;
             border-radius: 5px;
             /* animation: name time estado;  */
-            animation: animationIn 1s forwards;
+            /* animation: modalIn 1s forwards; */
             text-align: center;      
             padding: 20px;      
         }
@@ -58,12 +67,41 @@
             background:  cornflowerblue;
         }
         .modal-buttons .no{
-            background: red;
+            background: #ff463b;
         }
         .modal-buttons button:hover{
                  transform: scale(1.2);   
         }
-        @keyframes animationIn {
+        .container-btn{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+        .container-btn button{
+            padding: 7px 13px;
+            color: #fff;
+            background: brown;
+            outline: 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: .6s;
+            will-change: transform;
+        }
+        .container-btn button:hover{
+            transform: scale(1.2)
+        }
+        .cerrar{
+            font-size: 1.5em;
+            color: blue;
+            font-weight: bolder;
+            cursor: pointer;
+            margin: -17px 0px 0px 495px;
+        }
+        @keyframes modalIn {
             0%{
                 transform: translateY(-1000px);
             }
@@ -78,7 +116,7 @@
             }
             
         }
-        @keyframes animationOut {
+        @keyframes modalOut {
             0%{
                 transform: translateY(5px);
             }
@@ -96,6 +134,7 @@
 <body>
         <div class="overlay" id="overlay">
             <div class="modal" id="modal">
+                <p class="cerrar" id="cerrar">X</p>
                 <h1><b>Atención</b></h1><br />
                 <p>Esta es una increible ventana modal</p>
                 <p>¿te gusto?</p>
@@ -104,43 +143,39 @@
                     <button class="no" >NO :(</button>
                 </div>
             </div>
+        </div>
+        <div class="container-btn">
+                <button id="btn-mostrar">Mostrar Modal</button>
         </div>    
         <figure><img src="./webPlatzi.png" alt=""></figure>
 
         <script>
             const modal = document.getElementById('modal')
+            const btnSi = document.getElementById('si')
+            const overlay = document.getElementById('overlay')
+            const btnMostrar = document.getElementById('btn-mostrar')
+            const cerrar = document.getElementById('cerrar')
 
-            document.getElementById('si').addEventListener('click', e => {
+            btnSi.addEventListener('click', e => {
 
-                modal.animate(
-                    [ //animacion
-                        {
-                            transform: 'translateY(5px)'
-                        },
-                        {
-                            transform: 'translateY(-50px)'
-                        },
-                        {
-                            transform: 'translateY(25px)'
-                        },
-                        {
-                            transform: 'translateY(-1000px)'
-                        }
-
-                    ],{//opciones de la animacion
-                        duration: 1000, //tendra una duracion de 1 segundo
-                        direction: 'normal', //en que direccion se va a ir mi elmento si de izquierda a derecha o de derecha a izquierda
-                        easing: 'linear', //mantendra una velocidad constante 
-                        iterations: 1, //animacion infinita
-                        fill: 'forwards', //los estilos que se aplicaran a ami elemento despues de que la iteracion se termine, en este caso con for wards tomaria los estilos que tengo
-                    })
-                     const overlay = document.getElementById('overlay')
-                     setTimeout(()=>{
-                        overlay.style.background = 'none'
-                        overlay.style.position = 'static'   
-                        modal.style.display = 'none';
-                     },1000)
+                    modal.style.animation = 'modalOut 1s forwards' //aqui elijo mi aminacion que hice con el keyframe que es modalOut
+                    setTimeout(()=>{
+                        overlay.classList.remove('active')    
+                    },1000)
                 })//arrow function
+            
+            btnMostrar.addEventListener('click', e=>{
+                    modal.style.animation = 'modalIn 1s forwards'
+                    overlay.classList.add('active')    
+            })    
+
+            cerrar.addEventListener('click', e=>{
+                 
+                modal.style.animation = 'modalOut 1s forwards' //aqui elijo mi aminacion que hice con el keyframe que es modalOut
+                    setTimeout(()=>{
+                        overlay.classList.remove('active')    
+                    },1000)
+            })
         
         </script>
 </body>
