@@ -34,17 +34,37 @@
         .notification::before{
             /*ANIMATE*/
             will-change: transform;
+            transform-origin: center top; /*de esta forma se mueve centrado y hacia arriba*/
+        }
+        .notification.notify::before{
             animation-name: rotate;
             animation-duration: 1s;  
-            animation-iteration-count: infinite;
-            animation-direction: alternate;
+            animation-timing-function: ease-out; /*terminara mas lento*/
         }
         @keyframes rotate{
-            from{
+            0%{
                 transform: rotate(35deg);
             }
-            to{
+            12.5%{
                 transform: rotate(-30deg);
+            }
+            25%{
+                transform: rotate(25deg);
+            }
+            37.5%{
+                transform: rotate(-20deg);
+            }
+            50%{
+                transform: rotate(15deg);
+            }
+            62.5%{
+                transform: rotate(-10deg);
+            }
+            75%{
+                transform: rotate(5deg);
+            }
+            100%{
+                transform: rotate(0deg);
             }
         }
         .notification::after{
@@ -95,7 +115,7 @@
 <body>
         <header class="header">
             <button id="btn-notificacion">Enviar Notificación</button>
-                    <i class="fas fa-bell notification" id="notification" data-count=''></i>
+            <i class="fas fa-bell notification" id="notification" data-count=''></i>
         </header>
         <script>
             const btnNotificacion = document.getElementById('btn-notificacion')
@@ -105,7 +125,19 @@
              btnNotificacion.addEventListener('click', e=>{
                     let count = parseInt(bell.getAttribute('data-count') ) || 0
                     bell.setAttribute('data-count', count+1)
-                    bell.classList.add('show-count')  
+                    bell.classList.add('show-count') 
+                    bell.classList.add('notify')
+
+                    /*se puede hacer de esta manera*/
+                    /*setTimeout(()=>{ /*quito la clase de notify para que me vuelva a animar*/
+                       /* bell.classList.remove('notify')
+                    },1000)*/
+                    /*la desventaja de hacerlo con setTimeout es que si cambio el tiempo de la animacion tambien tengo que cambiar el tiempo
+                    de mi setTimeout para que de esta manera en cuanto se termine mi aniamcion el setTimeout haga lo suyo que es remover la clase*/
+             })
+
+             bell.addEventListener('animationend', e=>{ /*evento que esta a la escucha cuando se termian mi animacion se ejecuta*/
+                 bell.classList.remove('notify')/*y remuevo la clase notify*/
              })
         </script>
 </body>
