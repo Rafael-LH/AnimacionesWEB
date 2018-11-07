@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Notification</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <style>
+        body{
+            background: url('platzi.png');
+            background-size: 100%;
+            height: 200vh;
+            margin: 0;
+        }
+        .header{
+            background: #1d3644;
+            height: 52px;
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 200px;
+        }
+        .notification{
+            color: #fff;
+            width: 50px;
+            height: inherit; /*quiere decir que sea heredada, toma el alto de nuestro header*/
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .notification::before{
+            /*ANIMATE*/
+            will-change: transform;
+            animation-name: rotate;
+            animation-duration: 1s;  
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+        @keyframes rotate{
+            from{
+                transform: rotate(35deg);
+            }
+            to{
+                transform: rotate(-30deg);
+            }
+        }
+        .notification::after{
+                content: attr(data-count); /*creo un atributo desde css que se llama data-count*/
+                font-size: 11px;
+                font-weight: bold;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-width: 14px;
+                height: 14px;
+                background: #ff4600;
+                border-radius: 50%;
+                font-family: Arial;
+                position: absolute;
+                top: 11px;
+                right: 7px;
+                opacity: 0;
+                visibility: hidden;
+                transition: .8s;
+                transform: scale(.5);
+                will-change: transform, opacity;
+
+        }
+        .notification.show-count::after{
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+        .header button{
+            outline: 0;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            transition: .5s;
+            border-radius: 5px;
+            margin: 15px 7px 0px;
+            will-change: transform;
+            background:  cornflowerblue;
+        }
+        .header button:active{
+            transform: scale(.8)
+        }
+    </style>
+
+</head>
+<body>
+        <header class="header">
+            <button id="btn-notificacion">Enviar Notificación</button>
+                    <i class="fas fa-bell notification" id="notification" data-count=''></i>
+        </header>
+        <script>
+            const btnNotificacion = document.getElementById('btn-notificacion')
+            const bell = document.getElementById('notification')
+
+            let i = 1;    
+             btnNotificacion.addEventListener('click', e=>{
+                    let count = parseInt(bell.getAttribute('data-count') ) || 0
+                    bell.setAttribute('data-count', count+1)
+                    bell.classList.add('show-count')  
+             })
+        </script>
+</body>
+</html>
