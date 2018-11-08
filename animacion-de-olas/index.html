@@ -6,35 +6,65 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Olas</title>
 
-        <style>
+    <style>
             body{
                 margin: 0;
             }
-            .circulo{
-                width: 200px;
-                height: 200px;
-                background: rgb(0, 0, 0, .5);
-                border-radius: 50%;
+            .container{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center; /*centra verticalmente*/
+                    height: 500px;
+                    background: #0f9bf6;
+                    position: relative;
+                }
+            .waves{
                 position: absolute;
-                animation: 5s wave infinite alternate;
+                /* left: 0;
+                right: 0;
+                bottom: 0; */
+                bottom: -135px;
+                height: 527px;
+                width: 100%;
+                overflow: hidden;
+            }
+            .wave{
+                position: absolute;
+                height: 427px;
+                width: 2402px;
+                left: -180px;
+                bottom: 0;
+                animation: 5s wave ease-in-out infinite alternate;
+                background: url('waves.png') center bottom no-repeat;
                 will-change: transform;
             }
-            .circulo.a{
-                animation-delay: 1s;
+            .content{
+                font-family: Arial;
+                text-align: center;
+                font-size: 2em;
+                color: rgba(255, 255, 255, .8);
             }
-            .circulo.b{
-                animation-delay: 2s;
+            .wave.a{
+                                /*   x   y */  
+                background-position: 0 -854px;
             }
-            .container{
-                position: absolute;
-                display: flex;
+            .wave.b{
+                background-position: 0 -427px;
+                animation-delay: .6s;
+            }
+            .wave.c{
+                background-position: 0 0px;
+                animation-delay: 1.2s;
             }
             @keyframes wave{
                 0%{
-                    transform: translateX(0px) translateY(0px);
+                    transform: translate(0, 0);
+                }
+                50%{
+                    transform: translate(-80px, 30px);
                 }
                 100%{
-                    transform: translateX(200px) translateY(100px);
+                    transform: translate(160px, -60px);
                 }
             }
         </style>
@@ -42,9 +72,15 @@
 </head>
 <body>
         <div class="container">
-            <div class="circulo a"></div>
-            <div class="circulo b"></div>
-            <div class="circulo c"></div>
+            <div class="content">
+                <h1>Hola mundo!</h1>
+                <p>Curso de animaciones para la web</p>
+            </div>
+            <div class="waves">
+                <div class="wave circulo a"></div>
+                <div class="wave circulo b"></div>
+                <div class="wave circulo c"></div>
+            </div>
         </div>    
 </body>
 </html>
