@@ -1,0 +1,31 @@
+{
+  "name": "invie",
+  "version": "1.0.0",
+  "description": "proyecto final",
+  "main": "index.js",
+  "scripts": {
+    "build":"webpack --config ./webpack.config.js"
+  },
+  "keywords": [
+    "Webpack",
+    "ReactJS"
+  ],
+  "author": "Rafael Lopez",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "7.1.5",
+    "@babel/preset-env": "7.1.5",
+    "@babel/preset-react": "7.0.0",
+    "babel-loader": "8.0.0-beta.0",
+    "@babel/plugin-proposal-class-properties": "7.1.0",
+    "@babel/plugin-proposal-json-strings": "7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "7.0.0",
+    "@babel/plugin-syntax-import-meta": "7.0.0",
+    "webpack": "4.25.1",
+    "webpack-cli": "3.1.2"
+  },
+  "dependencies": {
+    "react": "16.6.1",
+    "react-dom": "16.6.1"
+  }
+}
