@@ -1,8 +1,10 @@
 import React from 'react'
 import {render} from 'react-dom'
-import InvieController from '../homeInvie/containers/InvieController'
+import Invie from '../homeInvie/Invie'
+import Redux from 'react-redux'
+// redux nos ayuda a distribuir datos
 
 render(
-    <InvieController />,
+    <Invie />,
     document.getElementById('root')
 )
