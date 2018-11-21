@@ -7,7 +7,7 @@ const data = {
                 src: invieAcustic,
                 title: 'Invie Acustica',
                 key: 1,
-                content:[
+                features:[
                         'Estilo vintage',
                         'Madera Pura',
                         'Incluye estuche invible de aluminio'
@@ -18,7 +18,7 @@ const data = {
                 src: invieClassic,
                 title: 'Invie Classic',
                 key: 2,
-                content:[
+                features:[
                          'Estilo vintage',
                          'Liviana',
                          'Inicia tu camino como Rockstar'
