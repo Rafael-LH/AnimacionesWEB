@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
 import Portada from '../components/Portada'
 import { connect } from 'react-redux'
-// Smart Component, Componente Inteligente, Controlador del MVC
-const mapStateToProps = state =>{
-    return {
-        logo: state.logoPortada,
-        menu: state.menu
-    }
 
-}
+// Smart Component, Componente Inteligente, Controlador del MVC
+const mapStateToProps = state =>(
+        {
+            logoPortada: state.logoPortada,
+            menu: state.menu
+        }
+)
 
  class PortadaContainer extends Component{
             render(){

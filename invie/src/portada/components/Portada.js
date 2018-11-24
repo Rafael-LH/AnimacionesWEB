@@ -1,5 +1,7 @@
 import React from 'react'
 
+// Dumb component, Vista del MVC, UI (user interface)
+
 const Portada = props => (
     props.data.map(items => {
         return(

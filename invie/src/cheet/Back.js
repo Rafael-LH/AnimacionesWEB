@@ -5,7 +5,7 @@ const GoBack = (store, data) =>{
         // console.log(`Regresaste al estado inicia`);
         store.dispatch({
             type: 'UPDATE_PROPS',
-            playload: {
+            payload: {
               props: data
             }
           })

@@ -5,11 +5,12 @@ const AnimacionScreen = (store, easter) => {
         // console.log(`Hola`);
         store.dispatch({
           type: 'UPDATE_PROPS',
-          playload: {
+          payload: {
             props: easter
           }
         })
   })
+  
 }
 
 export default AnimacionScreen
