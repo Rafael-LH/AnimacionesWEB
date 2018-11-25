@@ -3,6 +3,7 @@ import EasterA from '../images/easter-a.png'
 import EasterB from '../images/easter-b.png'
 
 const easter = {
+    isAnimated: 'is-animated',
     menu:[
         {
             href: "index.html",

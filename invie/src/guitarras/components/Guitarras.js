@@ -2,6 +2,7 @@ import React from 'react'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import '../../css/animations.css'
 
+// componente funcional, UI component
     const Guitarras = props =>(
 
         props.data.map(guitarra => {
@@ -19,14 +20,20 @@ import '../../css/animations.css'
                             alt={guitarra.alt}
                         />
                     </ReactCSSTransitionGroup>
-                    <div className="contenedor-guitarra-a">
-                        <h3 className="title-b">{guitarra.title}</h3>
-                        <ol>
-                             <li>Estilo vintage</li>      
-                             <li>Madera Pura</li>      
-                             <li>Incluye estuche invible de aluminio</li>      
-                        </ol>
-                    </div>
+                    <ReactCSSTransitionGroup
+                        transitionName="fade"
+                        transitionEnterTimeout={300}
+                        transitionLeave={false}
+                    >
+                        <div className="contenedor-guitarra-a" key={guitarra.title}>
+                            <h3 className="title-b">{guitarra.title}</h3>
+                            <ol>
+                                <li>Estilo vintage</li>      
+                                <li>Madera Pura</li>      
+                                <li>Incluye estuche invible de aluminio</li>      
+                            </ol>
+                        </div>
+                    </ReactCSSTransitionGroup>
                 </article>
                 )
             })

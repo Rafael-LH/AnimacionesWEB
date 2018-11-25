@@ -165,7 +165,7 @@
 
 /*animation: animationOut .8s forwards;*/
 .animationInOut-enter {
-  animation: animationIn .8s;
+  animation-name: animationIn .8s;
 }
 
 .animationInOut-leave {

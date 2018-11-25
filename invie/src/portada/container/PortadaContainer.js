@@ -1,12 +1,14 @@
 import React, {Component} from 'react'
 import Portada from '../components/Portada'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { connect } from 'react-redux'
 
 // Smart Component, Componente Inteligente, Controlador del MVC
 const mapStateToProps = state =>(
         {
             logoPortada: state.logoPortada,
-            menu: state.menu
+            menu: state.menu,
+            isAnimated: state.isAnimated
         }
 )
 
@@ -18,7 +20,7 @@ const mapStateToProps = state =>(
                         <figure className="logotipo">
                             {
                                 this.props.logoPortada.map(logo => {
-                                <img key={logo.key} src={logo.src} width={logo.width} height={logo.height} alt={logo.alt}/>
+                               return <img key={logo.key} src={logo.src} width={logo.width} height={logo.height} alt={logo.alt}/>
                              })
                             }
                         </figure>
@@ -28,11 +30,20 @@ const mapStateToProps = state =>(
                             </ul>
                         </nav>
                         </header>
+                        <ReactCSSTransitionGroup
+                            transitionName='animationInOut'
+                            transitionEnterTimeout={800}
+                            transitionLeaveTimeout={800}
+                        >
+                        {
+                            (!this.props.isAnimated) &&
                         <div className="contenedor" key="portada">
                             <h1 className="titulo">Guitarras <span>invie</span>sibles</h1>
                             <h3 className="title-a">Sé la estrella de rock que siempre quisiste ser</h3>
                             <a className="button" href="#guitarras">Conoce mas</a>
                         </div>
+                        }
+                        </ReactCSSTransitionGroup>
                     </section>
                 )
             }

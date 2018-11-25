@@ -1,8 +1,9 @@
-
 import invieAcustic from '../../images/invie-acustica.png'
 import invieClassic from '../../images/invie-classic.png'
+import logo from '../../images/invie.png'
 
 const data = {
+        isAnimated: false,
         menu:[
                 {
                     href: "index.html",
@@ -22,7 +23,7 @@ const data = {
             ],
             logoPortada:[
                 {
-                    src: '../../images/invie.png',
+                    src: logo,
                     width: 186,
                     height: 60,
                     alt: 'Invie logotipo',
