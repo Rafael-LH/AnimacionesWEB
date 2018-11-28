@@ -5,11 +5,6 @@ import EasterB from '../images/easter-b.png'
 const easter = {
     isAnimated: 'is-animated',
     menu:[
-        {
-            href: "index.html",
-            title: "Home",
-            id: 1
-        }
     ],
     guitarras:[
         {
